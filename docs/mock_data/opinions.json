@@ -1,0 +1,21 @@
+{"opinions": [
+ {"id": "O001", "case_id": "C001", "author_id": "u3", "author_name": "Ananya Rao", "author_role": "student",
+  "text": "I agree with the refund but think the apology is unnecessary. RBI timelines for failed ATM transactions say refunds must be credited within a fixed number of days, so the bank should also pay compensation for the delay.",
+  "created_at": "2026-11-18T18:30:00",
+  "comments": [
+   {"id": "M001", "opinion_id": "O001", "author_id": "u4", "author_name": "Adv. Sameer Khan", "author_role": "lawyer", "text": "Good point on compensation. Please cite the exact RBI circular and the day count before relying on it.", "created_at": "2026-11-18T20:10:00"},
+   {"id": "M002", "opinion_id": "O001", "author_id": "u3", "author_name": "Ananya Rao", "author_role": "student", "text": "Will look it up and add the reference tomorrow.", "created_at": "2026-11-18T20:40:00"}]},
+ {"id": "O002", "case_id": "C004", "author_id": "u3", "author_name": "Ananya Rao", "author_role": "student",
+  "text": "The AI is right to ask for the respondent version first. I would also check whether the demand notice was sent within the time limit, since that affects whether the cheque route is open.",
+  "created_at": "2026-11-17T09:15:00",
+  "comments": [
+   {"id": "M003", "opinion_id": "O002", "author_id": "u4", "author_name": "Adv. Sameer Khan", "author_role": "lawyer", "text": "Agreed. Timing of the notice is the first thing I would verify.", "created_at": "2026-11-17T11:00:00"}]},
+ {"id": "O003", "case_id": "C005", "author_id": "u3", "author_name": "Ananya Rao", "author_role": "student",
+  "text": "Proposal looks fair. I suggest adding that any deduction must be itemised and agreed in writing, to avoid the same dispute again.",
+  "created_at": "2026-11-16T13:00:00", "comments": []},
+ {"id": "O004", "case_id": "C007", "author_id": "u4", "author_name": "Adv. Sameer Khan", "author_role": "lawyer",
+  "text": "Strong consumer case. Service-centre report is key. I would make replacement the first option, because refund timelines often drag.",
+  "created_at": "2026-11-19T17:45:00",
+  "comments": [
+   {"id": "M004", "opinion_id": "O004", "author_id": "u3", "author_name": "Ananya Rao", "author_role": "student", "text": "Should the seller also bear the service-centre report cost?", "created_at": "2026-11-19T18:20:00"}]}
+]}

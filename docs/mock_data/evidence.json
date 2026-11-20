@@ -1,0 +1,7 @@
+{"evidence": [
+ {"id": "E001", "case_id": "C001", "description": "Bank statement showing the Rs 10,000 debit", "file_name": "bank_statement.pdf", "file_url": "/files/E001", "handler_alias": "CLERK-01", "attestation_status": "approved", "ocr_text": null, "created_at": "2026-11-18T09:12:00"},
+ {"id": "E002", "case_id": "C001", "description": "ATM failed-transaction slip", "file_name": "atm_slip.jpg", "file_url": "/files/E002", "handler_alias": "CLERK-01", "attestation_status": "pending", "ocr_text": "TRANSACTION FAILED  AMT 10000  REF 48291  PLEASE CONTACT YOUR BANK", "created_at": "2026-11-18T09:13:00"},
+ {"id": "E003", "case_id": "C003", "description": "Medical report of fractured arm", "file_name": "medical_report.pdf", "file_url": "/files/E003", "handler_alias": "IO-0417", "attestation_status": "approved", "ocr_text": null, "created_at": "2026-11-17T15:00:00"},
+ {"id": "E004", "case_id": "C003", "description": "CCTV clip from outside the market", "file_name": "cctv_clip.mp4", "file_url": "/files/E004", "handler_alias": "IO-0417", "attestation_status": "pending", "ocr_text": null, "created_at": "2026-11-17T16:10:00"},
+ {"id": "E005", "case_id": "C007", "description": "Service-centre report: battery fault", "file_name": "service_report.pdf", "file_url": "/files/E005", "handler_alias": "CLERK-02", "attestation_status": "flagged", "ocr_text": null, "created_at": "2026-11-19T12:55:00"}
+]}

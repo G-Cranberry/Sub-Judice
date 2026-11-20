@@ -1,0 +1,22 @@
+{"proposals": [
+ {"id": "P001", "case_id": "C001", "proposed_resolution": "The bank should refund the Rs 10,000 debited without cash being dispensed within 7 days and send a short written apology for the 20-day delay.",
+  "reasoning": ["The statement shows the debit and the slip shows a failed dispense at the same time", "No evidence that the claimant received the cash", "The bank has not shown any reversal entry"],
+  "suggested_relief": "Refund of Rs 10,000 within 7 days", "confidence": 0.82, "missing_information": ["Bank ATM journal log for the transaction"],
+  "status": "pending_review", "disclaimer": "AI-generated draft. Not a judgment. Needs human review.", "created_at": "2026-11-18T09:20:00"},
+ {"id": "P002", "case_id": "C004", "proposed_resolution": "The respondent should pay Rs 45,000 within 15 days. If not paid, the matter should go to a physical hearing. The respondent should be heard once before any final order.",
+  "reasoning": ["Cheque return memo shows the cheque was dishonoured", "Demand letter was sent and went unanswered", "Respondent version is not yet on record, so confidence is moderate"],
+  "suggested_relief": "Payment of Rs 45,000 within 15 days", "confidence": 0.7, "missing_information": ["Respondent version", "Proof of delivery of the goods"],
+  "status": "pending_review", "disclaimer": "AI-generated draft. Not a judgment. Needs human review.", "created_at": "2026-11-16T11:55:00"},
+ {"id": "P003", "case_id": "C005", "proposed_resolution": "The landlord should return the Rs 30,000 deposit within 10 days unless she produces itemised bills for damage. Normal wear and tear should not be deducted.",
+  "reasoning": ["Handover photos show the flat in ordinary condition", "Landlord claims damage but has shown no bills", "Deposit is normally refundable at the end of tenancy"],
+  "suggested_relief": "Refund of Rs 30,000 in 10 days, or itemised bills for any deduction", "confidence": 0.84, "missing_information": [],
+  "status": "pending_review", "disclaimer": "AI-generated draft. Not a judgment. Needs human review.", "created_at": "2026-11-15T16:35:00"},
+ {"id": "P004", "case_id": "C006", "proposed_resolution": "The client should pay the Rs 60,000 invoice in two parts within 21 days. The designer should confirm in writing the files handed over. Mediation is suggested if the client still disputes the order.",
+  "reasoning": ["The client approved the work by email, which suggests the work was ordered", "The client later denied ordering it without explaining the approval email", "No written contract is on record"],
+  "suggested_relief": "Payment of Rs 60,000 in two instalments within 21 days", "confidence": 0.72, "missing_information": ["Original brief or quote", "Client explanation of the approval email"],
+  "status": "pending_review", "disclaimer": "AI-generated draft. Not a judgment. Needs human review.", "created_at": "2026-11-14T10:20:00"},
+ {"id": "P005", "case_id": "C007", "proposed_resolution": "The seller should refund Rs 22,000 or replace the phone within 7 days, since the service report shows a battery fault inside the warranty period.",
+  "reasoning": ["Service-centre report points to a battery fault, not physical damage", "Phone failed 9 days after purchase", "Seller gave no inspection report supporting the damage claim"],
+  "suggested_relief": "Refund of Rs 22,000 or replacement within 7 days", "confidence": 0.86, "missing_information": ["Seller inspection report, if any"],
+  "status": "pending_review", "disclaimer": "AI-generated draft. Not a judgment. Needs human review.", "created_at": "2026-11-19T13:05:00"}
+]}

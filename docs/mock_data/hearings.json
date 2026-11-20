@@ -1,0 +1,7 @@
+{"hearings": [
+ {"id": "H001", "case_id": "C002", "case_number": "BP/2026/0002", "scheduled_at": "2026-11-21T11:00:00", "hearing_type": "first_hearing", "room": "Court 1"},
+ {"id": "H002", "case_id": "C003", "case_number": "BP/2026/0003", "scheduled_at": "2026-11-25T10:30:00", "hearing_type": "evidence", "room": "Court 2"},
+ {"id": "H003", "case_id": "C008", "case_number": "BP/2026/0008", "scheduled_at": "2026-12-02T14:00:00", "hearing_type": "first_hearing", "room": "Court 3"},
+ {"id": "H004", "case_id": "C004", "case_number": "BP/2026/0004", "scheduled_at": "2026-12-08T11:30:00", "hearing_type": "arguments", "room": "Court 4"},
+ {"id": "H005", "case_id": "C003", "case_number": "BP/2026/0003", "scheduled_at": "2026-12-12T10:30:00", "hearing_type": "arguments", "room": "Court 2"}
+]}

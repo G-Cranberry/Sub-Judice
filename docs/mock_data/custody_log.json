@@ -1,0 +1,10 @@
+{"entries": [
+ {"id": "L001", "evidence_id": "E003", "action": "collected", "from_alias": "HOSPITAL-REG", "to_alias": "IO-0417", "note": "Collected from hospital records desk", "at": "2026-11-17T15:00:00"},
+ {"id": "L002", "evidence_id": "E003", "action": "sealed", "from_alias": "IO-0417", "to_alias": "EVIDENCE-ROOM", "note": "Sealed, seal no. S-2291", "at": "2026-11-17T15:40:00"},
+ {"id": "L003", "evidence_id": "E003", "action": "attested", "from_alias": "EVIDENCE-ROOM", "to_alias": "NOTARY-U6", "note": "Verified by notary", "at": "2026-11-18T10:15:00"},
+ {"id": "L004", "evidence_id": "E004", "action": "collected", "from_alias": "MARKET-ASSN", "to_alias": "IO-0417", "note": "Copied from market CCTV recorder to a sealed drive", "at": "2026-11-17T16:10:00"},
+ {"id": "L005", "evidence_id": "E004", "action": "transferred", "from_alias": "IO-0417", "to_alias": "LAB-02", "note": "Sent for forensic clarity check", "at": "2026-11-18T09:30:00"},
+ {"id": "L006", "evidence_id": "E004", "action": "examined", "from_alias": "LAB-02", "to_alias": "LAB-02", "note": "Footage enhanced, report pending", "at": "2026-11-19T14:00:00"},
+ {"id": "L007", "evidence_id": "E001", "action": "collected", "from_alias": "FILER-u1", "to_alias": "CLERK-01", "note": "Uploaded with case filing", "at": "2026-11-18T09:12:00"},
+ {"id": "L008", "evidence_id": "E001", "action": "attested", "from_alias": "CLERK-01", "to_alias": "NOTARY-U6", "note": "Matches bank records", "at": "2026-11-19T11:00:00"}
+]}

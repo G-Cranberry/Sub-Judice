@@ -1,0 +1,8 @@
+{"users": [
+ {"id": "u1", "name": "Riya Mehta", "role": "filer"},
+ {"id": "u2", "name": "Karan Singh", "role": "court_staff"},
+ {"id": "u3", "name": "Ananya Rao", "role": "student"},
+ {"id": "u4", "name": "Adv. Sameer Khan", "role": "lawyer"},
+ {"id": "u5", "name": "Justice (Retd.) Meera Iyer", "role": "judge"},
+ {"id": "u6", "name": "Rahul Verma", "role": "notary"}
+]}

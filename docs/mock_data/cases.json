@@ -1,0 +1,246 @@
+{
+ "cases": [
+  {
+   "id": "C001",
+   "case_number": "BP/2026/0001",
+   "title": "ATM debited Rs 10,000 but no cash dispensed",
+   "case_type": "banking",
+   "summary": "Claimant withdrew Rs 10,000 from a bank ATM. The machine showed an error and printed a failed-transaction slip, but the amount was debited from the account. Complaint to the bank 20 days ago got no refund.",
+   "claim_amount": 10000,
+   "deadline": "2026-12-15",
+   "filed_by": "u1",
+   "claimant_name": "Riya Mehta",
+   "respondent_name": "Example National Bank",
+   "filed_at": "2026-11-18T09:12:00",
+   "status": "ai_review",
+   "route": "AI_REVIEW",
+   "triage": {
+    "urgency_score": 22,
+    "urgency_level": "LOW",
+    "complexity_score": 18,
+    "complexity_level": "LOW",
+    "confidence": 0.91,
+    "hard_flags": [],
+    "reasons": [
+     "Single small money claim of 10000 rupees",
+     "Bank statement and failed-transaction slip attached",
+     "No near deadline or safety risk"
+    ]
+   },
+   "override": null
+  },
+  {
+   "id": "C002",
+   "case_number": "BP/2026/0002",
+   "title": "Demolition notice, 48 hours left, stay sought",
+   "case_type": "property",
+   "summary": "A tenant family received a municipal demolition notice for their shop-house with only 48 hours to vacate. They ask for an urgent stay order. Two children and an elderly parent live in the premises.",
+   "claim_amount": null,
+   "deadline": "2026-11-22",
+   "filed_by": "u1",
+   "claimant_name": "Mohan Lal and family",
+   "respondent_name": "Example Municipal Corporation",
+   "filed_at": "2026-11-20T08:05:00",
+   "status": "routed_court",
+   "route": "PHYSICAL_COURT",
+   "triage": {
+    "urgency_score": 96,
+    "urgency_level": "HIGH",
+    "complexity_score": 58,
+    "complexity_level": "MEDIUM",
+    "confidence": 0.9,
+    "hard_flags": [
+     "injunction_or_stay",
+     "minor_involved",
+     "risk_to_life_or_safety"
+    ],
+    "reasons": [
+     "Demolition in 48 hours, harm is irreversible",
+     "Stay order requested",
+     "Children and an elderly person live in the premises"
+    ]
+   },
+   "override": null
+  },
+  {
+   "id": "C003",
+   "case_number": "BP/2026/0003",
+   "title": "Assault causing serious injury outside a market",
+   "case_type": "criminal",
+   "summary": "Complainant says two men attacked him with a rod outside a market. He has a fractured arm and a medical report. CCTV footage exists. Police have registered the matter.",
+   "claim_amount": null,
+   "deadline": "2026-12-05",
+   "filed_by": "u2",
+   "claimant_name": "Imran Qureshi",
+   "respondent_name": "Two unnamed accused",
+   "filed_at": "2026-11-17T14:30:00",
+   "status": "routed_court",
+   "route": "PHYSICAL_COURT",
+   "triage": {
+    "urgency_score": 64,
+    "urgency_level": "MEDIUM",
+    "complexity_score": 85,
+    "complexity_level": "HIGH",
+    "confidence": 0.93,
+    "hard_flags": [
+     "criminal_offence",
+     "multiple_parties"
+    ],
+    "reasons": [
+     "Criminal offence with serious injury",
+     "Several accused and CCTV evidence to verify",
+     "Needs a court, not an AI draft"
+    ]
+   },
+   "override": null
+  },
+  {
+   "id": "C004",
+   "case_number": "BP/2026/0004",
+   "title": "Cheque of Rs 45,000 returned unpaid",
+   "case_type": "contract",
+   "summary": "Claimant gave goods worth Rs 45,000 to a shop owner and received a cheque. The bank returned it for insufficient funds. A written demand was sent 15 days ago with no reply.",
+   "claim_amount": 45000,
+   "deadline": "2026-12-20",
+   "filed_by": "u1",
+   "claimant_name": "Sunita Traders",
+   "respondent_name": "Vikram Electricals",
+   "filed_at": "2026-11-16T11:40:00",
+   "status": "ai_review",
+   "route": "AI_REVIEW",
+   "triage": {
+    "urgency_score": 35,
+    "urgency_level": "LOW",
+    "complexity_score": 42,
+    "complexity_level": "MEDIUM",
+    "confidence": 0.78,
+    "hard_flags": [],
+    "reasons": [
+     "One clear amount and one respondent",
+     "Cheque return memo and demand letter attached",
+     "Respondent version not yet received"
+    ]
+   },
+   "override": null
+  },
+  {
+   "id": "C005",
+   "case_number": "BP/2026/0005",
+   "title": "Landlord not returning Rs 30,000 security deposit",
+   "case_type": "tenancy",
+   "summary": "Tenant vacated after 11 months and handed over the keys with a photo record. Landlord refuses to return the deposit, claiming unspecified damages and showing no bills.",
+   "claim_amount": 30000,
+   "deadline": "2027-01-10",
+   "filed_by": "u1",
+   "claimant_name": "Arjun Nair",
+   "respondent_name": "Mrs. Kavita Bhatia",
+   "filed_at": "2026-11-15T16:20:00",
+   "status": "ai_review",
+   "route": "AI_REVIEW",
+   "triage": {
+    "urgency_score": 18,
+    "urgency_level": "LOW",
+    "complexity_score": 24,
+    "complexity_level": "LOW",
+    "confidence": 0.88,
+    "hard_flags": [],
+    "reasons": [
+     "Small deposit refund dispute",
+     "Rental agreement and handover photos attached",
+     "Landlord has shown no repair bills"
+    ]
+   },
+   "override": null
+  },
+  {
+   "id": "C006",
+   "case_number": "BP/2026/0006",
+   "title": "Freelancer unpaid invoice of Rs 60,000",
+   "case_type": "contract",
+   "summary": "A freelance designer delivered a full brand kit. The client approved it on email but has not paid the Rs 60,000 invoice for 60 days and now says the work was never ordered.",
+   "claim_amount": 60000,
+   "deadline": "2027-01-05",
+   "filed_by": "u1",
+   "claimant_name": "Neha Kapoor",
+   "respondent_name": "Bright Bakes Pvt Ltd",
+   "filed_at": "2026-11-14T10:05:00",
+   "status": "ai_review",
+   "route": "AI_REVIEW",
+   "triage": {
+    "urgency_score": 20,
+    "urgency_level": "LOW",
+    "complexity_score": 38,
+    "complexity_level": "LOW",
+    "confidence": 0.8,
+    "hard_flags": [],
+    "reasons": [
+     "Single invoice dispute, one respondent",
+     "Email approval exists as evidence",
+     "Respondent denies ordering the work"
+    ]
+   },
+   "override": null
+  },
+  {
+   "id": "C007",
+   "case_number": "BP/2026/0007",
+   "title": "Defective phone, seller refuses refund of Rs 22,000",
+   "case_type": "consumer",
+   "summary": "Phone stopped charging 9 days after purchase. Seller refuses refund saying it is physical damage. Claimant has the invoice, a service-centre report of a battery fault, and photos of the phone.",
+   "claim_amount": 22000,
+   "deadline": "2026-12-30",
+   "filed_by": "u1",
+   "claimant_name": "Dev Malhotra",
+   "respondent_name": "Gadget Galaxy Retail",
+   "filed_at": "2026-11-19T12:50:00",
+   "status": "ai_review",
+   "route": "AI_REVIEW",
+   "triage": {
+    "urgency_score": 15,
+    "urgency_level": "LOW",
+    "complexity_score": 20,
+    "complexity_level": "LOW",
+    "confidence": 0.9,
+    "hard_flags": [],
+    "reasons": [
+     "Clear consumer refund claim",
+     "Service-centre report supports a battery fault",
+     "Warranty period is still running"
+    ]
+   },
+   "override": null
+  },
+  {
+   "id": "C008",
+   "case_number": "BP/2026/0008",
+   "title": "Ancestral land share dispute among five heirs",
+   "case_type": "property",
+   "summary": "Five siblings dispute the division of ancestral farmland after their father died without a will. Two have sold portions to outsiders. Title papers conflict and a neighbour also claims a boundary strip.",
+   "claim_amount": 4500000,
+   "deadline": null,
+   "filed_by": "u1",
+   "claimant_name": "Harpreet Sidhu and two siblings",
+   "respondent_name": "Two siblings and two buyers",
+   "filed_at": "2026-11-13T09:30:00",
+   "status": "routed_court",
+   "route": "PHYSICAL_COURT",
+   "triage": {
+    "urgency_score": 30,
+    "urgency_level": "LOW",
+    "complexity_score": 92,
+    "complexity_level": "HIGH",
+    "confidence": 0.89,
+    "hard_flags": [
+     "property_title",
+     "multiple_parties"
+    ],
+    "reasons": [
+     "Disputed title with conflicting papers",
+     "Five heirs plus outside buyers and a neighbour",
+     "High value, needs a court"
+    ]
+   },
+   "override": null
+  }
+ ]
+}
