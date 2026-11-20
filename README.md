@@ -1,4 +1,4 @@
-# BriefPrism (Sub Judice)
+# Sub Judice
 AI case triage and review for courts. Team Chaarisma, The Builders Theory 1.0.
 
 ## Repo layout
