@@ -1,0 +1,3603 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "Sub-Judice API",
+  "version": "0.3.0"
+ },
+ "paths": {
+  "/cases": {
+   "post": {
+    "tags": [
+     "cases"
+    ],
+    "summary": "Create Case",
+    "operationId": "create_case_cases_post",
+    "parameters": [
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-ai-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Ai-Token"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "multipart/form-data": {
+       "schema": {
+        "$ref": "#/components/schemas/Body_create_case_cases_post"
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CaseCreatedOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "cases"
+    ],
+    "summary": "List Cases",
+    "operationId": "list_cases_cases_get",
+    "parameters": [
+     {
+      "name": "route",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Route"
+      }
+     },
+     {
+      "name": "status",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Status"
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 200,
+       "minimum": 1,
+       "default": 50,
+       "title": "Limit"
+      }
+     },
+     {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "minimum": 0,
+       "default": 0,
+       "title": "Offset"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/CaseOut"
+         },
+         "title": "Response List Cases Cases Get"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/cases/import": {
+   "post": {
+    "tags": [
+     "cases"
+    ],
+    "summary": "Import Cases",
+    "description": "Load many cases at once (e.g. from the court's existing system or the AI intake service).\nEach case is validated and routed on its own: one bad row does not stop the others.",
+    "operationId": "import_cases_cases_import_post",
+    "parameters": [
+     {
+      "name": "source",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "string",
+       "description": "judiciary (staff token) or ai (AI token)",
+       "default": "judiciary",
+       "title": "Source"
+      },
+      "description": "judiciary (staff token) or ai (AI token)"
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-ai-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Ai-Token"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/CaseImportIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/CaseImportResult"
+         },
+         "title": "Response Import Cases Cases Import Post"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/cases/{case_id}/evidence": {
+   "post": {
+    "tags": [
+     "cases"
+    ],
+    "summary": "Add Evidence",
+    "description": "Attach more evidence to an existing case (filer with their case token, court staff, or the AI service).",
+    "operationId": "add_evidence_cases__case_id__evidence_post",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-case-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Case-Token"
+      }
+     },
+     {
+      "name": "x-ai-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Ai-Token"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "multipart/form-data": {
+       "schema": {
+        "$ref": "#/components/schemas/Body_add_evidence_cases__case_id__evidence_post"
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CaseOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/cases/{case_id}": {
+   "get": {
+    "tags": [
+     "cases"
+    ],
+    "summary": "Get Case",
+    "operationId": "get_case_cases__case_id__get",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-case-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Case-Token"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CaseOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/cases/{case_id}/override": {
+   "post": {
+    "tags": [
+     "cases"
+    ],
+    "summary": "Override Route",
+    "operationId": "override_route_cases__case_id__override_post",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/OverrideIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CaseOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/cases/{case_id}/status": {
+   "patch": {
+    "tags": [
+     "cases"
+    ],
+    "summary": "Update Status",
+    "description": "Cases are never deleted (legal record). Withdraw / close them with a status change; it is logged.",
+    "operationId": "update_status_cases__case_id__status_patch",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/CaseStatusUpdate"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CaseOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/cases/{case_id}/evidence/{evidence_id}/download": {
+   "get": {
+    "tags": [
+     "cases"
+    ],
+    "summary": "Download Evidence",
+    "description": "Serves the ORIGINAL file after re-checking its hash, and records the access in the custody chain.",
+    "operationId": "download_evidence_cases__case_id__evidence__evidence_id__download_get",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "evidence_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Evidence Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-case-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Case-Token"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/custody": {
+   "post": {
+    "tags": [
+     "custody"
+    ],
+    "summary": "Add Custody Entry",
+    "operationId": "add_custody_entry_custody_post",
+    "parameters": [
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/CustodyIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CustodyOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "custody"
+    ],
+    "summary": "List Custody",
+    "operationId": "list_custody_custody_get",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "evidence_id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "integer"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Evidence Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-case-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Case-Token"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/CustodyOut"
+         },
+         "title": "Response List Custody Custody Get"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/custody/verify/{case_id}": {
+   "get": {
+    "tags": [
+     "custody"
+    ],
+    "summary": "Verify Custody",
+    "operationId": "verify_custody_custody_verify__case_id__get",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "anchor_head",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Anchor Head"
+      }
+     },
+     {
+      "name": "anchor_entries",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "integer"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Anchor Entries"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-case-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Case-Token"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/CustodyVerifyOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/custody/anchor/{case_id}": {
+   "get": {
+    "tags": [
+     "custody"
+    ],
+    "summary": "Custody Anchor",
+    "description": "Snapshot of the chain head. Save it somewhere the database admin cannot edit; pass it back to\n/custody/verify/{id}?anchor_head=..&anchor_entries=.. to prove the whole log was not rebuilt.",
+    "operationId": "custody_anchor_custody_anchor__case_id__get",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-case-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Case-Token"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/AnchorOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/hearings": {
+   "post": {
+    "tags": [
+     "hearings"
+    ],
+    "summary": "Create Hearing",
+    "operationId": "create_hearing_hearings_post",
+    "parameters": [
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/HearingIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HearingOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "hearings"
+    ],
+    "summary": "List Hearings",
+    "operationId": "list_hearings_hearings_get",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "integer"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "upcoming",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "boolean",
+       "default": false,
+       "title": "Upcoming"
+      }
+     },
+     {
+      "name": "limit",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "maximum": 500,
+       "minimum": 1,
+       "default": 100,
+       "title": "Limit"
+      }
+     },
+     {
+      "name": "offset",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "minimum": 0,
+       "default": 0,
+       "title": "Offset"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-case-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Case-Token"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/HearingOut"
+         },
+         "title": "Response List Hearings Hearings Get"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/hearings/{hearing_id}": {
+   "get": {
+    "tags": [
+     "hearings"
+    ],
+    "summary": "Get Hearing",
+    "operationId": "get_hearing_hearings__hearing_id__get",
+    "parameters": [
+     {
+      "name": "hearing_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Hearing Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-case-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Case-Token"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HearingOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "patch": {
+    "tags": [
+     "hearings"
+    ],
+    "summary": "Update Hearing",
+    "operationId": "update_hearing_hearings__hearing_id__patch",
+    "parameters": [
+     {
+      "name": "hearing_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Hearing Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/HearingUpdate"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HearingOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/hearings/{hearing_id}/drafts": {
+   "post": {
+    "tags": [
+     "hearings"
+    ],
+    "summary": "Create Draft",
+    "operationId": "create_draft_hearings__hearing_id__drafts_post",
+    "parameters": [
+     {
+      "name": "hearing_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Hearing Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/DraftIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/DraftOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "hearings"
+    ],
+    "summary": "List Drafts",
+    "operationId": "list_drafts_hearings__hearing_id__drafts_get",
+    "parameters": [
+     {
+      "name": "hearing_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Hearing Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-case-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Case-Token"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/DraftOut"
+         },
+         "title": "Response List Drafts Hearings  Hearing Id  Drafts Get"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/cases/{case_id}/judgments": {
+   "post": {
+    "tags": [
+     "judgments"
+    ],
+    "summary": "Create Judgment",
+    "operationId": "create_judgment_cases__case_id__judgments_post",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/JudgmentIn"
+       }
+      }
+     }
+    },
+    "responses": {
+     "201": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/JudgmentOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "judgments"
+    ],
+    "summary": "List Judgments",
+    "operationId": "list_judgments_cases__case_id__judgments_get",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-case-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Case-Token"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/JudgmentOut"
+         },
+         "title": "Response List Judgments Cases  Case Id  Judgments Get"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/cases/{case_id}/judgments/{judgment_id}": {
+   "patch": {
+    "tags": [
+     "judgments"
+    ],
+    "summary": "Edit Judgment",
+    "operationId": "edit_judgment_cases__case_id__judgments__judgment_id__patch",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "judgment_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Judgment Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/JudgmentUpdate"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/JudgmentOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "judgments"
+    ],
+    "summary": "Get Judgment",
+    "operationId": "get_judgment_cases__case_id__judgments__judgment_id__get",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "judgment_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Judgment Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-case-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Case-Token"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/JudgmentOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/cases/{case_id}/judgments/{judgment_id}/publish": {
+   "post": {
+    "tags": [
+     "judgments"
+    ],
+    "summary": "Publish Judgment",
+    "operationId": "publish_judgment_cases__case_id__judgments__judgment_id__publish_post",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "judgment_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Judgment Id"
+      }
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/JudgmentPublishIn",
+        "default": {
+         "reviewed_simple_version": false
+        }
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/JudgmentOut"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/cases/{case_id}/judgments/{judgment_id}/download": {
+   "get": {
+    "tags": [
+     "judgments"
+    ],
+    "summary": "Download Judgment",
+    "operationId": "download_judgment_cases__case_id__judgments__judgment_id__download_get",
+    "parameters": [
+     {
+      "name": "case_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Case Id"
+      }
+     },
+     {
+      "name": "judgment_id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "integer",
+       "title": "Judgment Id"
+      }
+     },
+     {
+      "name": "version",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "enum": [
+        "professional",
+        "simple",
+        "both"
+       ],
+       "type": "string",
+       "description": "professional | simple | both",
+       "default": "both",
+       "title": "Version"
+      },
+      "description": "professional | simple | both"
+     },
+     {
+      "name": "format",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "enum": [
+        "txt",
+        "html"
+       ],
+       "type": "string",
+       "description": "txt | html (open the html and Print -> Save as PDF)",
+       "default": "txt",
+       "title": "Format"
+      },
+      "description": "txt | html (open the html and Print -> Save as PDF)"
+     },
+     {
+      "name": "x-staff-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Staff-Token"
+      }
+     },
+     {
+      "name": "x-case-token",
+      "in": "header",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "X-Case-Token"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/health": {
+   "get": {
+    "tags": [
+     "meta"
+    ],
+    "summary": "Health",
+    "operationId": "health_health_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "AnchorOut": {
+    "properties": {
+     "case_id": {
+      "type": "integer",
+      "title": "Case Id"
+     },
+     "entries": {
+      "type": "integer",
+      "title": "Entries"
+     },
+     "head": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Head"
+     },
+     "issued_at": {
+      "type": "string",
+      "title": "Issued At"
+     },
+     "signature": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Signature"
+     }
+    },
+    "type": "object",
+    "required": [
+     "case_id",
+     "entries",
+     "head",
+     "issued_at",
+     "signature"
+    ],
+    "title": "AnchorOut",
+    "description": "Store this OUTSIDE the database (email, another system, a notary). Later pass it to /custody/verify to\nprove the log was not rebuilt. `signature` is an HMAC (needs ANCHOR_SECRET or a staff token configured)."
+   },
+   "Body_add_evidence_cases__case_id__evidence_post": {
+    "properties": {
+     "files": {
+      "items": {
+       "type": "string",
+       "contentMediaType": "application/octet-stream"
+      },
+      "type": "array",
+      "title": "Files"
+     }
+    },
+    "type": "object",
+    "required": [
+     "files"
+    ],
+    "title": "Body_add_evidence_cases__case_id__evidence_post"
+   },
+   "Body_create_case_cases_post": {
+    "properties": {
+     "title": {
+      "type": "string",
+      "title": "Title"
+     },
+     "filer_name": {
+      "type": "string",
+      "title": "Filer Name"
+     },
+     "description": {
+      "type": "string",
+      "title": "Description",
+      "default": ""
+     },
+     "case_type": {
+      "type": "string",
+      "title": "Case Type",
+      "default": "civil"
+     },
+     "filer_type": {
+      "type": "string",
+      "title": "Filer Type",
+      "default": "individual"
+     },
+     "claim_amount": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Claim Amount"
+     },
+     "deadline": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Deadline"
+     },
+     "urgency_score": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Urgency Score"
+     },
+     "complexity_score": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Complexity Score"
+     },
+     "source": {
+      "type": "string",
+      "title": "Source",
+      "default": "user"
+     },
+     "submitted_by": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Submitted By"
+     },
+     "files": {
+      "items": {
+       "type": "string",
+       "contentMediaType": "application/octet-stream"
+      },
+      "type": "array",
+      "title": "Files",
+      "default": []
+     }
+    },
+    "type": "object",
+    "required": [
+     "title",
+     "filer_name"
+    ],
+    "title": "Body_create_case_cases_post"
+   },
+   "CaseCreatedOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "case_number": {
+      "type": "string",
+      "title": "Case Number"
+     },
+     "title": {
+      "type": "string",
+      "title": "Title"
+     },
+     "description": {
+      "type": "string",
+      "title": "Description"
+     },
+     "case_type": {
+      "type": "string",
+      "title": "Case Type"
+     },
+     "filer_type": {
+      "type": "string",
+      "title": "Filer Type"
+     },
+     "filer_name": {
+      "type": "string",
+      "title": "Filer Name"
+     },
+     "claim_amount": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Claim Amount"
+     },
+     "deadline": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Deadline"
+     },
+     "urgency_score": {
+      "type": "number",
+      "title": "Urgency Score"
+     },
+     "complexity_score": {
+      "type": "number",
+      "title": "Complexity Score"
+     },
+     "score_source": {
+      "type": "string",
+      "title": "Score Source"
+     },
+     "source": {
+      "type": "string",
+      "title": "Source",
+      "default": "user"
+     },
+     "submitted_by": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Submitted By"
+     },
+     "priority": {
+      "type": "string",
+      "title": "Priority"
+     },
+     "route": {
+      "type": "string",
+      "title": "Route"
+     },
+     "route_reasons": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Route Reasons"
+     },
+     "routed_by": {
+      "type": "string",
+      "title": "Routed By"
+     },
+     "status": {
+      "type": "string",
+      "title": "Status"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "evidence": {
+      "items": {
+       "$ref": "#/components/schemas/EvidenceOut"
+      },
+      "type": "array",
+      "title": "Evidence",
+      "default": []
+     },
+     "overrides": {
+      "items": {
+       "$ref": "#/components/schemas/OverrideOut"
+      },
+      "type": "array",
+      "title": "Overrides",
+      "default": []
+     },
+     "access_token": {
+      "type": "string",
+      "title": "Access Token"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "case_number",
+     "title",
+     "description",
+     "case_type",
+     "filer_type",
+     "filer_name",
+     "claim_amount",
+     "deadline",
+     "urgency_score",
+     "complexity_score",
+     "score_source",
+     "priority",
+     "route",
+     "route_reasons",
+     "routed_by",
+     "status",
+     "created_at",
+     "access_token"
+    ],
+    "title": "CaseCreatedOut",
+    "description": "Only the POST /cases response carries this. Store it: it is shown once and cannot be recovered."
+   },
+   "CaseImportIn": {
+    "properties": {
+     "cases": {
+      "items": {
+       "$ref": "#/components/schemas/CaseImportItem"
+      },
+      "type": "array",
+      "maxItems": 200,
+      "minItems": 1,
+      "title": "Cases"
+     }
+    },
+    "type": "object",
+    "required": [
+     "cases"
+    ],
+    "title": "CaseImportIn"
+   },
+   "CaseImportItem": {
+    "properties": {
+     "title": {
+      "type": "string",
+      "title": "Title"
+     },
+     "filer_name": {
+      "type": "string",
+      "title": "Filer Name"
+     },
+     "description": {
+      "type": "string",
+      "title": "Description",
+      "default": ""
+     },
+     "case_type": {
+      "type": "string",
+      "title": "Case Type",
+      "default": "civil"
+     },
+     "filer_type": {
+      "type": "string",
+      "title": "Filer Type",
+      "default": "individual"
+     },
+     "claim_amount": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Claim Amount"
+     },
+     "deadline": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Deadline"
+     },
+     "urgency_score": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Urgency Score"
+     },
+     "complexity_score": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Complexity Score"
+     }
+    },
+    "type": "object",
+    "required": [
+     "title",
+     "filer_name"
+    ],
+    "title": "CaseImportItem"
+   },
+   "CaseImportResult": {
+    "properties": {
+     "index": {
+      "type": "integer",
+      "title": "Index"
+     },
+     "ok": {
+      "type": "boolean",
+      "title": "Ok"
+     },
+     "id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Id"
+     },
+     "case_number": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Case Number"
+     },
+     "route": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Route"
+     },
+     "access_token": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Access Token"
+     },
+     "error": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Error"
+     }
+    },
+    "type": "object",
+    "required": [
+     "index",
+     "ok"
+    ],
+    "title": "CaseImportResult"
+   },
+   "CaseOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "case_number": {
+      "type": "string",
+      "title": "Case Number"
+     },
+     "title": {
+      "type": "string",
+      "title": "Title"
+     },
+     "description": {
+      "type": "string",
+      "title": "Description"
+     },
+     "case_type": {
+      "type": "string",
+      "title": "Case Type"
+     },
+     "filer_type": {
+      "type": "string",
+      "title": "Filer Type"
+     },
+     "filer_name": {
+      "type": "string",
+      "title": "Filer Name"
+     },
+     "claim_amount": {
+      "anyOf": [
+       {
+        "type": "number"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Claim Amount"
+     },
+     "deadline": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Deadline"
+     },
+     "urgency_score": {
+      "type": "number",
+      "title": "Urgency Score"
+     },
+     "complexity_score": {
+      "type": "number",
+      "title": "Complexity Score"
+     },
+     "score_source": {
+      "type": "string",
+      "title": "Score Source"
+     },
+     "source": {
+      "type": "string",
+      "title": "Source",
+      "default": "user"
+     },
+     "submitted_by": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Submitted By"
+     },
+     "priority": {
+      "type": "string",
+      "title": "Priority"
+     },
+     "route": {
+      "type": "string",
+      "title": "Route"
+     },
+     "route_reasons": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Route Reasons"
+     },
+     "routed_by": {
+      "type": "string",
+      "title": "Routed By"
+     },
+     "status": {
+      "type": "string",
+      "title": "Status"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "evidence": {
+      "items": {
+       "$ref": "#/components/schemas/EvidenceOut"
+      },
+      "type": "array",
+      "title": "Evidence",
+      "default": []
+     },
+     "overrides": {
+      "items": {
+       "$ref": "#/components/schemas/OverrideOut"
+      },
+      "type": "array",
+      "title": "Overrides",
+      "default": []
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "case_number",
+     "title",
+     "description",
+     "case_type",
+     "filer_type",
+     "filer_name",
+     "claim_amount",
+     "deadline",
+     "urgency_score",
+     "complexity_score",
+     "score_source",
+     "priority",
+     "route",
+     "route_reasons",
+     "routed_by",
+     "status",
+     "created_at"
+    ],
+    "title": "CaseOut"
+   },
+   "CaseStatusUpdate": {
+    "properties": {
+     "status": {
+      "type": "string",
+      "enum": [
+       "FILED",
+       "AI_REVIEW",
+       "SENT_TO_COURT",
+       "JUDGMENT_ISSUED",
+       "WITHDRAWN",
+       "CLOSED"
+      ],
+      "title": "Status"
+     },
+     "reason": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 2000
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Reason"
+     },
+     "updated_by": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 200
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Updated By"
+     }
+    },
+    "type": "object",
+    "required": [
+     "status"
+    ],
+    "title": "CaseStatusUpdate"
+   },
+   "CustodyIn": {
+    "properties": {
+     "case_id": {
+      "type": "integer",
+      "title": "Case Id"
+     },
+     "evidence_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Evidence Id"
+     },
+     "action": {
+      "type": "string",
+      "maxLength": 80,
+      "minLength": 1,
+      "title": "Action",
+      "description": "e.g. TRANSFERRED, VIEWED, VERIFIED, SEALED"
+     },
+     "handled_by": {
+      "type": "string",
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Handled By"
+     },
+     "role": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 80
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Role"
+     },
+     "notes": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 5000
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Notes"
+     }
+    },
+    "type": "object",
+    "required": [
+     "case_id",
+     "action",
+     "handled_by"
+    ],
+    "title": "CustodyIn"
+   },
+   "CustodyOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "case_id": {
+      "type": "integer",
+      "title": "Case Id"
+     },
+     "evidence_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Evidence Id"
+     },
+     "action": {
+      "type": "string",
+      "title": "Action"
+     },
+     "handled_by": {
+      "type": "string",
+      "title": "Handled By"
+     },
+     "role": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Role"
+     },
+     "notes": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Notes"
+     },
+     "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Timestamp"
+     },
+     "prev_hash": {
+      "type": "string",
+      "title": "Prev Hash"
+     },
+     "entry_hash": {
+      "type": "string",
+      "title": "Entry Hash"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "case_id",
+     "evidence_id",
+     "action",
+     "handled_by",
+     "role",
+     "notes",
+     "timestamp",
+     "prev_hash",
+     "entry_hash"
+    ],
+    "title": "CustodyOut"
+   },
+   "CustodyVerifyOut": {
+    "properties": {
+     "case_id": {
+      "type": "integer",
+      "title": "Case Id"
+     },
+     "entries": {
+      "type": "integer",
+      "title": "Entries"
+     },
+     "valid": {
+      "type": "boolean",
+      "title": "Valid"
+     },
+     "first_broken_entry_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "First Broken Entry Id"
+     },
+     "evidence_checked": {
+      "type": "integer",
+      "title": "Evidence Checked",
+      "default": 0
+     },
+     "evidence_intact": {
+      "type": "boolean",
+      "title": "Evidence Intact",
+      "default": true
+     },
+     "evidence_problems": {
+      "items": {
+       "$ref": "#/components/schemas/EvidenceProblem"
+      },
+      "type": "array",
+      "title": "Evidence Problems",
+      "default": []
+     },
+     "anchor_ok": {
+      "anyOf": [
+       {
+        "type": "boolean"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Anchor Ok"
+     }
+    },
+    "type": "object",
+    "required": [
+     "case_id",
+     "entries",
+     "valid",
+     "first_broken_entry_id"
+    ],
+    "title": "CustodyVerifyOut"
+   },
+   "DraftIn": {
+    "properties": {
+     "doc_type": {
+      "type": "string",
+      "enum": [
+       "hearing_notice",
+       "summons",
+       "adjournment_application",
+       "order_sheet"
+      ],
+      "title": "Doc Type"
+     },
+     "prepared_by": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 200
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Prepared By"
+     }
+    },
+    "type": "object",
+    "required": [
+     "doc_type"
+    ],
+    "title": "DraftIn"
+   },
+   "DraftOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "hearing_id": {
+      "type": "integer",
+      "title": "Hearing Id"
+     },
+     "case_id": {
+      "type": "integer",
+      "title": "Case Id"
+     },
+     "doc_type": {
+      "type": "string",
+      "title": "Doc Type"
+     },
+     "content": {
+      "type": "string",
+      "title": "Content"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "hearing_id",
+     "case_id",
+     "doc_type",
+     "content",
+     "created_at"
+    ],
+    "title": "DraftOut"
+   },
+   "EvidenceOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "filename": {
+      "type": "string",
+      "title": "Filename"
+     },
+     "content_type": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Content Type"
+     },
+     "size_bytes": {
+      "type": "integer",
+      "title": "Size Bytes"
+     },
+     "sha256": {
+      "type": "string",
+      "title": "Sha256"
+     },
+     "uploaded_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Uploaded At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "filename",
+     "content_type",
+     "size_bytes",
+     "sha256",
+     "uploaded_at"
+    ],
+    "title": "EvidenceOut"
+   },
+   "EvidenceProblem": {
+    "properties": {
+     "evidence_id": {
+      "type": "integer",
+      "title": "Evidence Id"
+     },
+     "problem": {
+      "type": "string",
+      "enum": [
+       "MISSING",
+       "HASH_MISMATCH"
+      ],
+      "title": "Problem"
+     }
+    },
+    "type": "object",
+    "required": [
+     "evidence_id",
+     "problem"
+    ],
+    "title": "EvidenceProblem"
+   },
+   "HTTPValidationError": {
+    "properties": {
+     "detail": {
+      "items": {
+       "$ref": "#/components/schemas/ValidationError"
+      },
+      "type": "array",
+      "title": "Detail"
+     }
+    },
+    "type": "object",
+    "title": "HTTPValidationError"
+   },
+   "HearingIn": {
+    "properties": {
+     "case_id": {
+      "type": "integer",
+      "title": "Case Id"
+     },
+     "scheduled_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Scheduled At"
+     },
+     "court": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 200
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Court"
+     },
+     "purpose": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Purpose"
+     },
+     "notes": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 5000
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Notes"
+     },
+     "scheduled_by": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 200
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Scheduled By"
+     }
+    },
+    "type": "object",
+    "required": [
+     "case_id",
+     "scheduled_at"
+    ],
+    "title": "HearingIn"
+   },
+   "HearingOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "case_id": {
+      "type": "integer",
+      "title": "Case Id"
+     },
+     "scheduled_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Scheduled At"
+     },
+     "court": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Court"
+     },
+     "purpose": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Purpose"
+     },
+     "status": {
+      "type": "string",
+      "title": "Status"
+     },
+     "notes": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Notes"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "drafts": {
+      "items": {
+       "$ref": "#/components/schemas/DraftOut"
+      },
+      "type": "array",
+      "title": "Drafts",
+      "default": []
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "case_id",
+     "scheduled_at",
+     "court",
+     "purpose",
+     "status",
+     "notes",
+     "created_at"
+    ],
+    "title": "HearingOut"
+   },
+   "HearingUpdate": {
+    "properties": {
+     "scheduled_at": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date-time"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Scheduled At"
+     },
+     "court": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 200
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Court"
+     },
+     "purpose": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Purpose"
+     },
+     "status": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "SCHEDULED",
+         "COMPLETED",
+         "ADJOURNED",
+         "CANCELLED"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Status"
+     },
+     "notes": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 5000
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Notes"
+     },
+     "updated_by": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 200
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Updated By"
+     }
+    },
+    "type": "object",
+    "title": "HearingUpdate"
+   },
+   "JudgmentIn": {
+    "properties": {
+     "title": {
+      "type": "string",
+      "maxLength": 300,
+      "minLength": 3,
+      "title": "Title"
+     },
+     "professional_text": {
+      "type": "string",
+      "maxLength": 200000,
+      "minLength": 20,
+      "title": "Professional Text"
+     },
+     "simple_text": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 100000
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Simple Text"
+     },
+     "language": {
+      "type": "string",
+      "enum": [
+       "en",
+       "hi"
+      ],
+      "title": "Language",
+      "default": "en"
+     },
+     "hearing_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Hearing Id"
+     },
+     "issued_by": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 200
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Issued By"
+     },
+     "auto_simplify": {
+      "type": "boolean",
+      "title": "Auto Simplify",
+      "default": true
+     }
+    },
+    "type": "object",
+    "required": [
+     "title",
+     "professional_text"
+    ],
+    "title": "JudgmentIn"
+   },
+   "JudgmentOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "case_id": {
+      "type": "integer",
+      "title": "Case Id"
+     },
+     "hearing_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Hearing Id"
+     },
+     "title": {
+      "type": "string",
+      "title": "Title"
+     },
+     "professional_text": {
+      "type": "string",
+      "title": "Professional Text"
+     },
+     "simple_text": {
+      "type": "string",
+      "title": "Simple Text"
+     },
+     "simple_source": {
+      "type": "string",
+      "title": "Simple Source"
+     },
+     "language": {
+      "type": "string",
+      "title": "Language"
+     },
+     "status": {
+      "type": "string",
+      "title": "Status"
+     },
+     "issued_by": {
+      "type": "string",
+      "title": "Issued By"
+     },
+     "content_hash": {
+      "type": "string",
+      "title": "Content Hash"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     },
+     "published_at": {
+      "anyOf": [
+       {
+        "type": "string",
+        "format": "date-time"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Published At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "case_id",
+     "hearing_id",
+     "title",
+     "professional_text",
+     "simple_text",
+     "simple_source",
+     "language",
+     "status",
+     "issued_by",
+     "content_hash",
+     "created_at",
+     "published_at"
+    ],
+    "title": "JudgmentOut"
+   },
+   "JudgmentPublishIn": {
+    "properties": {
+     "reviewed_simple_version": {
+      "type": "boolean",
+      "title": "Reviewed Simple Version",
+      "default": false
+     }
+    },
+    "type": "object",
+    "title": "JudgmentPublishIn"
+   },
+   "JudgmentUpdate": {
+    "properties": {
+     "title": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 300,
+        "minLength": 3
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Title"
+     },
+     "professional_text": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 200000,
+        "minLength": 20
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Professional Text"
+     },
+     "simple_text": {
+      "anyOf": [
+       {
+        "type": "string",
+        "maxLength": 100000,
+        "minLength": 1
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Simple Text"
+     },
+     "language": {
+      "anyOf": [
+       {
+        "type": "string",
+        "enum": [
+         "en",
+         "hi"
+        ]
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Language"
+     },
+     "resimplify": {
+      "type": "boolean",
+      "title": "Resimplify",
+      "default": false
+     }
+    },
+    "type": "object",
+    "title": "JudgmentUpdate"
+   },
+   "OverrideIn": {
+    "properties": {
+     "new_route": {
+      "type": "string",
+      "enum": [
+       "DIRECT_TO_COURT",
+       "AI_REVIEW"
+      ],
+      "title": "New Route"
+     },
+     "reason": {
+      "type": "string",
+      "maxLength": 2000,
+      "minLength": 3,
+      "title": "Reason"
+     },
+     "staff_name": {
+      "type": "string",
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Staff Name"
+     }
+    },
+    "type": "object",
+    "required": [
+     "new_route",
+     "reason",
+     "staff_name"
+    ],
+    "title": "OverrideIn"
+   },
+   "OverrideOut": {
+    "properties": {
+     "id": {
+      "type": "integer",
+      "title": "Id"
+     },
+     "previous_route": {
+      "type": "string",
+      "title": "Previous Route"
+     },
+     "new_route": {
+      "type": "string",
+      "title": "New Route"
+     },
+     "staff_name": {
+      "type": "string",
+      "title": "Staff Name"
+     },
+     "reason": {
+      "type": "string",
+      "title": "Reason"
+     },
+     "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Created At"
+     }
+    },
+    "type": "object",
+    "required": [
+     "id",
+     "previous_route",
+     "new_route",
+     "staff_name",
+     "reason",
+     "created_at"
+    ],
+    "title": "OverrideOut"
+   },
+   "ValidationError": {
+    "properties": {
+     "loc": {
+      "items": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "integer"
+        }
+       ]
+      },
+      "type": "array",
+      "title": "Location"
+     },
+     "msg": {
+      "type": "string",
+      "title": "Message"
+     },
+     "type": {
+      "type": "string",
+      "title": "Error Type"
+     },
+     "input": {
+      "title": "Input"
+     },
+     "ctx": {
+      "type": "object",
+      "title": "Context"
+     }
+    },
+    "type": "object",
+    "required": [
+     "loc",
+     "msg",
+     "type"
+    ],
+    "title": "ValidationError"
+   }
+  }
+ }
+}

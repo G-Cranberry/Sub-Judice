@@ -1,0 +1,23 @@
+title,description,case_type,claim_amount,deadline_days,evidence_count,label
+Refund for broken laptop screen,Shop refused to replace the laptop screen cracked on delivery.,consumer,42000,,3,AI_REVIEW
+Dispute over shared taxi fare,Co-passenger refuses to pay agreed share of an outstation trip.,civil,4000,,1,AI_REVIEW
+Broadband not working,"Internet connection down for six weeks, provider not responding.",consumer,3000,120,2,AI_REVIEW
+Caterer overcharged at function,"Caterer billed for 200 guests, only 120 attended.",consumer,38000,,4,AI_REVIEW
+Advance not returned by tutor,"Paid advance for a semester, classes never started.",civil,16000,,2,AI_REVIEW
+Defective bike,New motorcycle has an engine defect within a month of purchase.,consumer,95000,35,5,AI_REVIEW
+Society maintenance dispute,Housing society charging extra maintenance for a parking slot not used.,civil,18000,,2,AI_REVIEW
+Return of borrowed equipment,Friend has not returned a camera lent for a trip.,civil,45000,,1,AI_REVIEW
+Refund denied on cancelled tour,Tour operator cancelled the package and keeps the booking amount.,consumer,70000,50,3,AI_REVIEW
+Stay at hotel was poor,We were promised a sea-facing room but got a ground floor room; asking partial refund.,consumer,8000,,2,AI_REVIEW
+Landlord changed locks,Landlord locked me out of my rented flat today with my belongings inside.,civil,,1,2,DIRECT_TO_COURT
+Threatening messages from ex-partner,Repeated threatening messages and stalking outside my office.,civil,,,4,DIRECT_TO_COURT
+Property being sold tomorrow,Brother is selling our joint ancestral house tomorrow without consent.,property,6000000,1,5,DIRECT_TO_COURT
+Pension account frozen,"Bank froze my pension account; I cannot buy medicines, appeal date is in 2 days.",consumer,60000,2,3,DIRECT_TO_COURT
+Company director removal,Removal of two directors and disputed board meeting minutes.,corporate,800000,,7,DIRECT_TO_COURT
+Chain snatching,Gold chain snatched near the market.,criminal,60000,,1,DIRECT_TO_COURT
+Writ for school admission,Writ petition against state denying admission quota seats.,constitutional,,,3,DIRECT_TO_COURT
+Sibling inheritance fight,Four siblings and two legal heirs dispute the will; farmland and shop involved.,family,4500000,,8,DIRECT_TO_COURT
+"Wage not paid, will be homeless",Employer has not paid wages for 3 months; I will be evicted from my room next week.,civil,90000,6,3,DIRECT_TO_COURT
+Hinglish urgent filing,"Turant stay order chahiye, kal demolition hai.",civil,,1,2,DIRECT_TO_COURT
+Dialysis centre denying treatment,My father needs dialysis three times a week and the centre stopped his sessions this morning.,consumer,,,2,DIRECT_TO_COURT
+Passport needed to fly for surgery,"Passport office delayed, my surgery abroad is booked and I fly shortly.",civil,,,2,DIRECT_TO_COURT

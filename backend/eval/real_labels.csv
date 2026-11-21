@@ -1,0 +1,3 @@
+title,description,case_type,claim_amount,deadline,evidence_count,label
+Example - replace me,"Landlord served eviction notice, vacate in 3 days",civil,50000,2026-11-24,2,DIRECT_TO_COURT
+Example - replace me,"Refund refused for faulty mixer",consumer,4500,,2,AI_REVIEW

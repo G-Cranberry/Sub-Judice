@@ -1,0 +1,115 @@
+{
+ "_help": "Edit this file (or point VOCAB_FILE at your own copy) to change what the rule-based scorer recognises. No code change needed. Each entry is [label, regular-expression, case-insensitive]. 'critical_urgent' terms alone push urgency over the threshold; 'soft_urgent' terms need support from other signals.",
+ "critical_urgent": [
+  [
+   "injunction",
+   "\\binjunctions?\\b"
+  ],
+  [
+   "stay order",
+   "\\bstay (?:order|of)\\b"
+  ],
+  [
+   "eviction",
+   "\\bevict(?:ion|ed|ing)?\\b"
+  ],
+  [
+   "bail",
+   "\\bbail\\b"
+  ],
+  [
+   "arrest",
+   "\\barrest(?:ed)?\\b"
+  ],
+  [
+   "domestic violence",
+   "\\bdomestic violence\\b"
+  ],
+  [
+   "threat",
+   "\\bthreat(?:s|en(?:s|ed|ing)?)?\\b"
+  ],
+  [
+   "medical emergency",
+   "\\bmedical emergenc(?:y|ies)\\b"
+  ],
+  [
+   "demolition",
+   "\\bdemolition\\b|\\bdemolish(?:ed|ing)?\\b"
+  ],
+  [
+   "protection order",
+   "\\bprotection order\\b"
+  ],
+  [
+   "critical medical care",
+   "\\bdialysis\\b|\\bchemotherapy\\b|\\bventilator\\b|\\bicu\\b|\\bsurgery\\b|\\blife[- ]threatening\\b"
+  ],
+  [
+   "homeless / locked out",
+   "\\bhomeless\\b|\\blocked (?:me )?out\\b|\\bchanged (?:the )?locks\\b"
+  ]
+ ],
+ "soft_urgent": [
+  [
+   "urgent",
+   "\\burgent(?:ly)?\\b"
+  ],
+  [
+   "immediate",
+   "\\bimmediate(?:ly)?\\b"
+  ],
+  [
+   "emergency",
+   "\\bemergenc(?:y|ies)\\b"
+  ],
+  [
+   "harassment",
+   "\\bharass(?:ment|ing|ed)?\\b"
+  ],
+  [
+   "custody",
+   "\\bcustody\\b"
+  ],
+  [
+   "limitation period",
+   "\\blimitation\\b|\\btime[- ]barred\\b|\\bcondonation\\b"
+  ],
+  [
+   "disconnection",
+   "\\bdisconnect(?:ion|ed)?\\b|\\bcut-?off\\b"
+  ],
+  [
+   "time pressure",
+   "\\bthis morning\\b|\\btonight\\b|\\btomorrow\\b|\\bthis week\\b|\\bshortly\\b|\\bwithin (?:a |\\d+ )?(?:days?|hours?)\\b|\\bturant\\b"
+  ],
+  [
+   "treatment denied",
+   "\\bdenied (?:treatment|admission|medicine)\\b|\\bstopped (?:his|her|their|the) (?:sessions|treatment)\\b"
+  ]
+ ],
+ "multi_party": "\\b(legal heirs?|siblings?|partners?|co-?owners?|shareholders?|trust|multiple parties|several (?:parties|defendants))\\b",
+ "inherently_complex_types": [
+  "constitutional",
+  "corporate"
+ ],
+ "complex_types": [
+  "criminal",
+  "family",
+  "property"
+ ],
+ "case_type_aliases": {
+  "criminal_case": "criminal",
+  "criminal_complaint": "criminal",
+  "crime": "criminal",
+  "fir": "criminal",
+  "consumer_dispute": "consumer",
+  "consumer_complaint": "consumer",
+  "civil_dispute": "civil",
+  "civil_suit": "civil",
+  "writ": "constitutional",
+  "writ_petition": "constitutional",
+  "company": "corporate",
+  "commercial": "corporate"
+ }
+}

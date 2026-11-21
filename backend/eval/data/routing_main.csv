@@ -1,0 +1,48 @@
+title,description,case_type,claim_amount,deadline_days,evidence_count,label
+ATM double debit,"Two ATM debits recorded for one card within a minute; Rs 20,000 shown in passbook.",consumer,20000,,3,AI_REVIEW
+Defective mixer grinder,Refund refused for a faulty mixer bought online.,consumer,4500,,2,AI_REVIEW
+Security deposit not returned,"Landlord has not returned a Rs 30,000 deposit after the lease ended.",civil,30000,,2,AI_REVIEW
+Unpaid freelance invoice,Client has not paid invoice for website work.,civil,60000,,4,AI_REVIEW
+Delayed courier parcel,"Parcel delivered 3 weeks late, claiming shipping fee refund.",consumer,800,,1,AI_REVIEW
+Gym membership refund,"Gym closed down, membership fee not refunded.",consumer,12000,90,2,AI_REVIEW
+Neighbour wall repair cost,Neighbour agreed to share repair cost but is refusing now.,civil,25000,,3,AI_REVIEW
+Travel booking cancelled,"Airline cancelled flight, refund pending for 4 months.",consumer,18000,60,3,AI_REVIEW
+Tuition fee dispute,Coaching institute refuses refund after withdrawal.,consumer,40000,,2,AI_REVIEW
+Mobile phone warranty claim,"Phone stopped working inside warranty, service centre refuses repair.",consumer,15000,,2,AI_REVIEW
+Loan repayment between friends,Friend borrowed money and stopped replying.,civil,90000,,5,AI_REVIEW
+Wedding photographer no-show,"Photographer did not turn up, asking for advance back.",consumer,35000,45,3,AI_REVIEW
+Water bill overcharge,Municipal water bill is ten times the usual amount.,civil,7000,,1,AI_REVIEW
+Insurance claim underpaid,Insurer paid less than the repair estimate for car damage.,consumer,85000,40,4,AI_REVIEW
+Furniture not delivered,"Paid in full, sofa never delivered despite reminders.",consumer,52000,,3,AI_REVIEW
+Cheque bounce small amount,"Cheque of Rs 15,000 returned unpaid.",civil,15000,,2,AI_REVIEW
+Hotel booking overcharge,Hotel charged more than the confirmed rate.,consumer,6000,,2,AI_REVIEW
+Online course not accessible,Course login never worked after payment.,consumer,9999,,1,AI_REVIEW
+Tenant damage to flat,Tenant left scratches and a broken door; deposit withheld fairly disputed.,civil,20000,,6,AI_REVIEW
+Bailment dispute,Storage company lost furniture left with them in bailment; seeking its value.,civil,28000,,3,AI_REVIEW
+Eviction notice,"Landlord served an eviction notice, vacate within 3 days.",civil,50000,3,2,DIRECT_TO_COURT
+Stay order needed,"Demolition of shop scheduled this week, need a stay order.",civil,,5,3,DIRECT_TO_COURT
+Injunction against sale,Seeking injunction to stop sale of disputed land tomorrow.,civil,,1,4,DIRECT_TO_COURT
+Domestic violence protection,"Threats and violence at home, seeking protection order.",family,,,2,DIRECT_TO_COURT
+Medical emergency insurance,Insurer refuses cashless treatment during a medical emergency.,consumer,300000,2,3,DIRECT_TO_COURT
+Child custody interim,"Immediate custody hearing needed, child at risk.",family,,6,3,DIRECT_TO_COURT
+Limitation expires tomorrow,Limitation period for filing ends tomorrow.,civil,40000,1,2,DIRECT_TO_COURT
+Deadline today,Appeal window closes today.,consumer,25000,0,2,DIRECT_TO_COURT
+Deadline already passed,"Condonation of delay needed, appeal window closed yesterday.",civil,50000,-1,2,DIRECT_TO_COURT
+Harassment by lender,Recovery agents harassing and threatening family at night.,civil,50000,,2,DIRECT_TO_COURT
+Utility cut-off notice,Urgent: power disconnection tomorrow despite payment.,civil,9000,1,1,DIRECT_TO_COURT
+Bail application,Bail application for relative detained for two days.,civil,,2,2,DIRECT_TO_COURT
+Stay of eviction + deadline,Eviction on the 5th.,civil,20000,4,2,DIRECT_TO_COURT
+Immediate demolition,Immediate demolition threat to home.,property,,,3,DIRECT_TO_COURT
+Theft complaint,Mobile phone stolen at the bus stand.,criminal,20000,,1,DIRECT_TO_COURT
+Cheating case,"Fraud of Rs 5,000 by online seller.",criminal,5000,,2,DIRECT_TO_COURT
+Assault,Physical assault during a neighbourhood fight.,criminal,,,3,DIRECT_TO_COURT
+Criminal intimidation,Repeated threats via phone.,Criminal,,,2,DIRECT_TO_COURT
+Criminal (padded case type),Burglary at shop.,  criminal ,10000,,1,DIRECT_TO_COURT
+FIR for forgery,"Forged signature on property papers, FIR filed.",criminal case,100000,,4,DIRECT_TO_COURT
+Corporate shareholder dispute,Dispute over share transfer and board resolutions between partners.,corporate,5000000,,12,DIRECT_TO_COURT
+Partition of ancestral property,Partition among several legal heirs with disputed wills.,property,3000000,,10,DIRECT_TO_COURT
+Constitutional writ,Writ challenging a state notification.,constitutional,,,6,DIRECT_TO_COURT
+Large contractual claim,"Breach of supply contract, multiple invoices and correspondences.",civil,2500000,,15,DIRECT_TO_COURT
+Land title dispute,Competing title deeds and mutation records.,property,1500000,,9,DIRECT_TO_COURT
+Multi-party family settlement,Family property settlement involving four siblings and a trust.,family,2000000,,9,DIRECT_TO_COURT
+Big consumer claim,Builder delayed possession by 5 years; claiming Rs 25 lakh.,consumer,2500000,,11,DIRECT_TO_COURT

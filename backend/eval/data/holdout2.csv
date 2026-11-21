@@ -1,0 +1,19 @@
+title,description,case_type,claim_amount,deadline_days,evidence_count,label
+Refund for faulty air conditioner,"AC stopped cooling after two months, dealer refuses repair or refund.",consumer,38000,,3,AI_REVIEW
+Unreturned library deposit,"College has not returned my Rs 2,000 caution deposit after graduation.",civil,2000,,1,AI_REVIEW
+Damaged luggage on flight,"Suitcase arrived broken, airline offers only a small voucher.",consumer,15000,80,3,AI_REVIEW
+Contractor left tiling unfinished,Contractor took advance for bathroom tiling and stopped coming.,civil,55000,,4,AI_REVIEW
+Subscription charged after cancel,Streaming service kept billing me for four months after cancellation.,consumer,2400,,2,AI_REVIEW
+Fence boundary disagreement,Neighbour built a fence about a foot over the shared line; want it moved.,civil,30000,,3,AI_REVIEW
+Wrong item delivered,"Ordered a washing machine, received a different model, seller will not exchange.",consumer,27000,25,2,AI_REVIEW
+Car service overbilling,Garage billed for parts that were never replaced.,consumer,22000,,3,AI_REVIEW
+Power cut to hospital clinic,"Electricity board cut supply to my clinic and patients are waiting, restore tonight.",civil,,1,2,DIRECT_TO_COURT
+Tenant threatened with removal,Owner's men came with a bulldozer and said the shop will be broken tomorrow.,property,,,2,DIRECT_TO_COURT
+Passport impounded before exam abroad,My passport was impounded and my exam abroad is in three days.,civil,,3,2,DIRECT_TO_COURT
+Cheque dishonour complaint,"Cheque dishonoured, FIR lodged against drawer.",criminal,250000,,3,DIRECT_TO_COURT
+Merger share valuation challenge,Minority shareholders challenge valuation in a merger of two listed companies.,corporate,90000000,,14,DIRECT_TO_COURT
+Writ on land acquisition,Writ challenging acquisition notification under state law.,constitutional,,,5,DIRECT_TO_COURT
+Pregnant employee dismissed,Employer fired me during advanced pregnancy; delivery date is next week and I have no income.,civil,,,2,DIRECT_TO_COURT
+Hinglish: ghar khali karwa rahe hain,"Malik kal subah ghar khali karwane aa raha hai, hum kahan jayenge.",civil,,,1,DIRECT_TO_COURT
+Child not allowed into school,"School has refused my daughter entry since Monday, she is missing her board exam preparation.",consumer,,,2,DIRECT_TO_COURT
+Insulin supply refused,"Pharmacy chain refuses to supply my son's insulin pump consumables, we have two days of stock.",consumer,12000,,2,DIRECT_TO_COURT
